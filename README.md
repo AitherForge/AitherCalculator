@@ -4,33 +4,36 @@ A fast, mobile-first calculator by Aither.
 
 ## Version
 
-**5.1.0**
+**6.0.0**
+
+## What's new in 6.0
+
+- Rebuilt the calculator around a real expression parser instead of chained single-operation state.
+- Parentheses now evaluate as real grouped expressions.
+- Supports full expressions with operator precedence: `+`, `−`, `×`, `÷`, `^`.
+- Scientific functions can be used inside expressions.
+- Added postfix percent and factorial evaluation.
+- Added constants `π`, `e`, and `Ans` to expressions.
+- Improved negative-number and sign handling.
+- Improved reciprocal calculation.
+- History entries can be loaded back into the calculator.
+- Improved keyboard support for expressions, parentheses, percent, and powers.
+- Force Update now asks the service worker to check for a newer version before reloading.
+- Updated the PWA cache from v5 to v6 so GitHub Pages users receive the new calculator engine.
 
 ## Shared Aither Account
 
-Aither Calculator uses the same AitherBackend account service as the other Aither apps. Use the same email and password to sign in to the same Aither account across services.
-
-- Register: `/api/auth/register`
-- Login: `/api/auth/login`
-- Session: `/api/auth/session`
-- Logout: `/api/auth/logout`
-- Default backend: `https://aither-backend.onrender.com`
-
-## What's new in 5.1
-
-- Added shared Aither account sign-in and account creation
-- Added session restore and sign-out
-- Connected the account client to the common AitherBackend service
-- Kept calculator data and history local to the device
+Aither Calculator uses the same Aither Account service as the other Aither apps. Use the same account credentials across Aither services rather than creating separate calculator accounts.
 
 ## Features
 
-- Basic arithmetic: addition, subtraction, multiplication, and division
+- Basic arithmetic
+- Parentheses and expression evaluation
 - Percentage, sign, reciprocal, and backspace controls
 - Scientific mode with sin, cos, tan, square root, square, cube, absolute value, factorial, exponent, log, ln, pi, e, and Ans
 - DEG and RAD angle modes
 - Calculator memory: MC, MR, M+, and M−
-- Calculation history stored locally on the device
+- Calculation history stored locally and synced through the existing Aither cloud integration when signed in
 - Unit converter with length, mass, temperature, and speed
 - Light and dark themes
 - Optional haptic feedback
@@ -38,10 +41,9 @@ Aither Calculator uses the same AitherBackend account service as the other Aithe
 - Optional automatic clipboard copying after calculations
 - Copy result to clipboard
 - Keyboard support on desktop
-- Responsive layout designed for iPhone, Android, tablet, and desktop
+- Responsive layout for iPhone, Android, tablet, and desktop
 - PWA manifest and offline service worker
-- Settings modal with a working Force Update button
-- Shared Aither account
+- Settings with Force Update
 - No calculator API key required
 
 ## Run
@@ -52,8 +54,9 @@ Open `index.html` in a browser, or deploy the repository with GitHub Pages.
 
 - `index.html` — app structure, calculator, settings, converter, and install UI
 - `style.css` — responsive UI, themes, converter, and mobile layout
-- `app.js` — calculator engine, scientific functions, memory, history, settings, unit conversion, and PWA install handling
-- `aither-account.js` — shared AitherBackend account client
+- `app.js` — expression parser, calculator engine, scientific functions, memory, history, settings, unit conversion, keyboard support, and PWA install handling
+- `aither-auth.js` — shared Aither Account client
+- `aither-cloud.js` — per-account calculator data synchronization
 - `manifest.json` — web app metadata
 - `sw.js` — offline cache and update worker
 
